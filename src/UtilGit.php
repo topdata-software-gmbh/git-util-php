@@ -1,5 +1,6 @@
 <?php
-namespace Topdata\TopdataPluginManagerSW6\Util;
+
+namespace Topdata\GitUtil;
 
 
 /**
