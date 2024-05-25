@@ -29,6 +29,7 @@ class UtilProcess
 
     /**
      * It returns full output (stdout and stderr)
+     *
      * 05/2024 created
      *
      * @throws \RuntimeException

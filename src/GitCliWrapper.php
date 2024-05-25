@@ -6,52 +6,52 @@ namespace Topdata\GitUtil;
 /**
  * 05/2024 created
  */
-class UtilGit
+class GitCliWrapper
 {
 
-    public function getBranch(string $pluginPathFull): string
+    public static function getBranch(string $pluginPathFull): string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull branch --show-current 2>&1";
 
         return UtilProcess::exec($cmd);
     }
 
-    public function getCommitId(string $pluginPathFull): string
+    public static function getCommitId(string $pluginPathFull): string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull rev-parse HEAD 2>&1";
 
         return UtilProcess::exec($cmd);
     }
 
-    public function getCommitIdShort(string $pluginPathFull): string
+    public static function getCommitIdShort(string $pluginPathFull): string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull rev-parse --short HEAD 2>&1";
 
         return UtilProcess::exec($cmd);
     }
 
-    public function getAuthor(string $pluginPathFull): string
+    public static function getAuthor(string $pluginPathFull): string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull log -1 --pretty=format:'%an' 2>&1";
 
         return UtilProcess::exec($cmd);
     }
 
-    public function getDate(string $pluginPathFull): ?string
+    public static function getDate(string $pluginPathFull): ?string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull log -1 --pretty=format:'%ad' 2>&1";
 
         return UtilProcess::exec($cmd, null);
     }
 
-    public function getEmail(string $pluginPathFull): string
+    public static function getEmail(string $pluginPathFull): string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull log -1 --pretty=format:'%ae' 2>&1";
 
         return UtilProcess::exec($cmd);
     }
 
-    public function getMessage(string $pluginPathFull): string
+    public static function getMessage(string $pluginPathFull): string
     {
         $cmd = "/usr/bin/git -C $pluginPathFull -c safe.directory=$pluginPathFull log -1 --pretty=format:'%s' 2>&1";
 
@@ -65,7 +65,7 @@ class UtilGit
      *
      * @return string - full output of the command (stdout and stderr)
      */
-    public function fetchAndResetHard(string $fullPath, string $pathSshKey): string
+    public static function fetchAndResetHard(string $fullPath, string $pathSshKey): string
     {
         $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c 'core.sshCommand=ssh -i $pathSshKey'  fetch";
         $cmd2 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c 'core.sshCommand=ssh -i $pathSshKey'  reset --hard";
@@ -78,7 +78,7 @@ class UtilGit
      * 05/2024 created
      * @return string - full output of the command (stdout and stderr)
      */
-    public function pull(string $fullPath, string $pathSshKey): string
+    public static function pull(string $fullPath, string $pathSshKey): string
     {
         $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c 'core.sshCommand=ssh -i $pathSshKey'  pull";
 
