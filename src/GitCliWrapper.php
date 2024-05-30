@@ -85,4 +85,17 @@ class GitCliWrapper
         return UtilProcess::execOrFail($cmd1 . ' 2>&1');
     }
 
+
+    /**
+     * 05/2024 created
+     * @return string - full output of the command (stdout and stderr)
+     */
+    public static function pullRebase(string $fullPath, string $pathSshKey): string
+    {
+        $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c 'core.sshCommand=ssh -i $pathSshKey'  pull --rebase";
+
+        return UtilProcess::execOrFail($cmd1 . ' 2>&1');
+    }
+
+
 }
