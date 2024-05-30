@@ -1,6 +1,6 @@
 {
     "name": "topdata/git-util",
-    "version": "v1.0.2",
+    "version": "v1.0.3",
     "description": "Wrapper around git CLI",
     "type": "library",
     "require-dev": {
