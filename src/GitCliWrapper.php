@@ -80,7 +80,7 @@ class GitCliWrapper
      */
     public static function pull(string $fullPath, string $pathSshKey): string
     {
-        $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c 'core.sshCommand=ssh -i $pathSshKey'  pull";
+        $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c core.fileMode=false -c 'core.sshCommand=ssh -i $pathSshKey'  pull";
 
         return UtilProcess::execOrFail($cmd1 . ' 2>&1');
     }
@@ -92,7 +92,7 @@ class GitCliWrapper
      */
     public static function pullRebase(string $fullPath, string $pathSshKey): string
     {
-        $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c 'core.sshCommand=ssh -i $pathSshKey'  pull --rebase";
+        $cmd1 = "/usr/bin/git -C $fullPath -c safe.directory=$fullPath -c core.fileMode=false -c 'core.sshCommand=ssh -i $pathSshKey'  pull --rebase";
 
         return UtilProcess::execOrFail($cmd1 . ' 2>&1');
     }
